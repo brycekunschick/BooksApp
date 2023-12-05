@@ -16,10 +16,16 @@ namespace BooksApp_Sec02.Controllers
         }
 
 
-        public IActionResult Index()//method that allows us to read the information from the database
+        public IActionResult Index(string searchString)//method that allows us to read the information from the database
         {
 
          List<Book> booksList = _context.books.ToList();//gets a list of all the books in the books table
+
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                booksList = booksList.Where(bk => bk.Title.Contains(searchString)).ToList();
+                //The "bk" here can be anything because the compiler knows that it is working with a list of books
+            }
 
             return View(booksList);
         }

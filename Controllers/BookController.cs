@@ -23,5 +23,11 @@ namespace BooksApp_Sec02.Controllers
 
             return View(booksList);
         }
+
+        public IActionResult Create() 
+        {
+            return View();
+        }
+
     }
 }

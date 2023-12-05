@@ -63,14 +63,44 @@ namespace BooksApp_Sec02.Controllers
         [HttpPost]
         public IActionResult Edit(int id, [Bind("BookID, Title, Description, Author, DatePublished, Genre, Price")] Book myBook)
         {
-            if(ModelState.IsValid)
+            if (myBook.BookID == id) //checks ID matches URL, not necessary but sometimes needed to fix issues
             {
-                _context.books.Update(myBook);
+
+                if (ModelState.IsValid)
+                {
+                    _context.books.Update(myBook);
+                    _context.SaveChanges();
+                }
+
+            }
+
+                return RedirectToAction("Index");
+
+        }
+
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            //fetch the book associated with the ID that has been provided
+            var myBook = _context.books.Find(id);
+
+            return View(myBook);//The view will render the book object that is being passed to it. Then, the HTML page that is generated will be displayed for the user
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePost(int id)
+        {
+            //find the record
+            var myBook = _context.books.Find(id);
+
+            if (myBook != null)
+            {
+                _context.books.Remove(myBook);
                 _context.SaveChanges();
             }
 
             return RedirectToAction("Index");
-
         }
 
     }

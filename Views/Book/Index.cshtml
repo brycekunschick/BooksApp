@@ -48,10 +48,12 @@
                 </td>
 
                 <td>
-                    <a asp-controller="Book" asp-action="Edit" asp-route-id="@bookObj.BookID"
-                    >Edit</a>
+                    <a asp-controller="Book" asp-action="Edit" asp-route-id="@bookObj.BookID">Edit</a>
                 </td>
                 
+                <td>
+                    <a asp-controller="Book" asp-action="Delete" asp-route-id="@bookObj.BookID">Delete</a>
+                </td>
 
             </tr>
 

@@ -42,5 +42,14 @@ namespace BooksApp_Sec02.Controllers
 
         }
 
+        public IActionResult Details(int id) 
+        {
+            //connect to the book table in the database and fetch the book with the id that has been provided as a parameter
+            Book myBook =    _context.books.Find(id);
+            
+            return View(myBook);
+
+        }
+
     }
 }

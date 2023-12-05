@@ -11,6 +11,7 @@ namespace BooksApp_Sec02.Models
 
         public string Author { get; set; }
 
+        [DataType(DataType.Date)] //gets rid of the time portion in the create field
         public DateTime DatePublished { get; set; }
 
         public string Genre { get; set; }

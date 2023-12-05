@@ -31,12 +31,21 @@
         {
             <tr>
                 <td>@bookObj.BookID</td>
-                <td>@bookObj.Title</td>
+                
+                <td>
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@bookObj.BookID">@bookObj.Title</a>
+                    </td>
                 <td>@bookObj.Description</td>
                 <td>@bookObj.Author</td>
                 <td>@bookObj.DatePublished.ToShortDateString()</td>
                 <td>@bookObj.Genre</td>
                 <td>@string.Format("{0:c}",bookObj.Price)</td>
+
+                <td>
+
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@bookObj.BookID">Details</a>
+
+                </td>
                 
 
             </tr>

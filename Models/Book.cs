@@ -1,8 +1,11 @@
-﻿namespace BooksApp_Sec02.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BooksApp_Sec02.Models
 {
     public class Book
     {
-        public int ID { get; set; }
+        [Key]   
+        public int Book__ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 

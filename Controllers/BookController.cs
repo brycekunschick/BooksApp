@@ -51,5 +51,27 @@ namespace BooksApp_Sec02.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            //fetch the book associated with the ID that has been provided
+            var myBook = _context.books.Find(id);
+
+            return View(myBook);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, [Bind("BookID, Title, Description, Author, DatePublished, Genre, Price")] Book myBook)
+        {
+            if(ModelState.IsValid)
+            {
+                _context.books.Update(myBook);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+
+        }
+
     }
 }

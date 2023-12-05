@@ -4,6 +4,7 @@ using BooksApp_Sec02.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BooksApp_Sec02.Migrations
 {
     [DbContext(typeof(BooksDBContext))]
-    partial class BooksDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231205062754_changingColsOfBooksTable")]
+    partial class changingColsOfBooksTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,38 +58,6 @@ namespace BooksApp_Sec02.Migrations
                     b.HasKey("BookID");
 
                     b.ToTable("books");
-
-                    b.HasData(
-                        new
-                        {
-                            BookID = 1,
-                            Author = "Salman Nazir",
-                            DatePublished = new DateTime(2023, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "This has no description",
-                            Genre = "Coding",
-                            Price = 19.99m,
-                            Title = "C# for Beginners"
-                        },
-                        new
-                        {
-                            BookID = 2,
-                            Author = "Adam Freeman",
-                            DatePublished = new DateTime(2022, 10, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "This has no description",
-                            Genre = "Coding",
-                            Price = 59.99m,
-                            Title = "Advanced C#"
-                        },
-                        new
-                        {
-                            BookID = 3,
-                            Author = "Morgan Freeman",
-                            DatePublished = new DateTime(2020, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "This has no description",
-                            Genre = "Coding",
-                            Price = 15.99m,
-                            Title = "HTML for Beginners"
-                        });
                 });
 #pragma warning restore 612, 618
         }

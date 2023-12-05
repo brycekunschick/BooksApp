@@ -40,7 +40,7 @@ namespace BooksApp_Sec02
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Book}/{action=Index}/{id?}");
 
             app.Run();
         }

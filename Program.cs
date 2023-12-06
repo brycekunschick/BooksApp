@@ -12,8 +12,10 @@ namespace BooksApp_Sec02
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            string path = Directory.GetCurrentDirectory();
+
             //get connection string information and store it in a variable
-            var connectionString = builder.Configuration.GetConnectionString("BooksDBConnection");
+            var connectionString = builder.Configuration.GetConnectionString("BooksDBConnection").Replace("[DataDirectory]", path);
 
             //add the DbContext class to the services using sqlserver as the default DBMS, along with the connection string fetched in the previous stmt
             builder.Services.AddDbContext<BooksDBContext>(options => options.UseSqlServer(connectionString));
